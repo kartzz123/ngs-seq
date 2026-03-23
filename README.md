@@ -1,1 +1,68 @@
 # ngs-seq
+This Docker image provides a comprehensive bioinformatics pipeline for processing next-generation sequencing (NGS) data, using the popular tools bwa, samtools, bcftools, fastqc, and others. The pipeline performs a series of steps including downloading sequencing data, performing quality control, aligning reads to a reference genome, processing the alignment data into BAM format, and finally calling variants. All the tools and necessary files are pre-installed, making this image ideal for bioinformaticians working with NGS data
+
+****Key Features:
+Base Image: Ubuntu 22.04
+
+Pre-installed Tools:
+
+bwa (for alignment)
+
+samtools (for BAM processing)
+
+bcftools (for variant calling)
+
+fastqc (for quality control)
+
+sra-toolkit (for downloading sequencing data)
+
+default-jre (Java Runtime Environment for certain bioinformatics tools)
+
+openssl (for secure file handling) Genome Reference: GRCh38 (Human reference genome)
+
+Custom Pipeline:
+
+Data Download: FastQ files from NCBI SRA using fasterq-dump.
+
+Quality Control: fastqc for assessing the quality of raw sequencing data.
+
+Alignment: Aligns paired-end reads to the GRCh38 reference genome using bwa.
+
+BAM Processing: Converts SAM files to BAM, sorts, and indexes using samtools.
+
+Variant Calling: Uses bcftools for calling variants from aligned BAM files.
+
+Default Workflow:
+
+Downloads paired-end FastQ files for specified SRR accessions.
+
+Performs a quality check with fastqc on both FastQ files.
+
+Aligns the reads to the human genome (GRCh38) using bwa mem.
+
+Converts the resulting SAM files to sorted BAM files, and indexes them with samtools.
+
+Performs variant calling using bcftools and generates VCF files. Default Workflow:
+
+Downloads paired-end FastQ files for specified SRR accessions.
+
+Performs a quality check with fastqc on both FastQ files.
+
+Aligns the reads to the human genome (GRCh38) using bwa mem.
+
+Converts the resulting SAM files to sorted BAM files, and indexes them with samtools.
+
+Performs variant calling using bcftools and generates VCF files.
+
+Customizable:
+
+Thread Configuration: The number of threads used for multi-threaded tools is configurable via the THREADS environment variable (default is 4 threads).
+
+Input: Users can modify the SRR accessions in the script to specify different sequencing datasets.
+
+Command: The default command runs the pipeline, but users can customize it by editing pipeline.sh. To run the pipeline:
+
+docker run -v /path/to/data:/data <image_name>
+
+This Docker image provides an easy-to-use solution for automating the processing and analysis of NGS data, simplifying the workflow for researchers and bioinformaticians.
+
