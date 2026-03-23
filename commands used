@@ -1,0 +1,21 @@
+commands used
+# 1. Build image
+sudo docker build -t kartzz/ngs-bioimage:latest .
+
+# 2. Login
+sudo docker login
+
+# 3. Push to Docker Hub
+sudo docker push kartzz/ngs-bioimage:latest
+
+# 4 sudo docker ps 
+
+# 5 sudo docker stats 
+
+# 6 sudo docker volume ls
+
+# 7 sudo docker ps -aq
+
+# 8 sudo docker images 
+
+
