@@ -65,4 +65,7 @@ Command: The default command runs the pipeline, but users can customize it by ed
 docker run -v /path/to/data:/data <image_name>
 
 This Docker image provides an easy-to-use solution for automating the processing and analysis of NGS data, simplifying the workflow for researchers and bioinformaticians.
+dockedr hub link
 
+**https://hub.docker.com/repository/docker/kartzz/ngs-bioimage/general
+**
